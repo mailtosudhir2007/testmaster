@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Master — QA & Software Testing Consultant</title>
+<meta name="description" content="Test Master — 15+ years of expert Manual Testing & QA Consulting for Web, Mobile, Desktop and Cloud applications worldwide.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0c0f;
+  --surface: #111418;
+  --surface2: #181c22;
+  --border: #1e242e;
+  --accent: #00c9a7;
+  --accent2: #0084ff;
+  --gold: #f0b429;
+  --text: #e8edf5;
+  --muted: #6b7788;
+  --faint: #1a2030;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: 0.35; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 5rem; background: rgba(10,12,15,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: padding 0.3s; }
+.nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+.nav-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.7);} }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { background: var(--accent) !important; color: #0a0c0f !important; padding: 0.52rem 1.3rem !important; border-radius: 7px; font-weight: 600 !important; }
+.nav-cta:hover { opacity: 0.88 !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 5rem 5rem; position: relative; overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,201,167,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(0,201,167,0.045) 1px, transparent 1px); background-size: 55px 55px; mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 20%, transparent 100%); }
+.hero-glow { position: absolute; top: -15%; right: -8%; width: 750px; height: 750px; background: radial-gradient(ellipse, rgba(0,201,167,0.09) 0%, transparent 70%); pointer-events: none; }
+.hero-glow2 { position: absolute; bottom: 5%; left: -12%; width: 550px; height: 550px; background: radial-gradient(ellipse, rgba(0,132,255,0.07) 0%, transparent 70%); pointer-events: none; }
+.hero-inner { max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+.hero-content { animation: fadeUp 0.9s ease both; }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,201,167,0.1); border: 1px solid rgba(0,201,167,0.25); color: var(--accent); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.8rem; }
+.badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.6rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 1.4rem; }
+.accent-word { color: var(--accent); }
+.hero-sub { font-size: 1.1rem; color: var(--muted); font-weight: 300; line-height: 1.75; max-width: 520px; margin-bottom: 2.4rem; }
+.hero-sub strong { color: var(--text); font-weight: 500; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--accent); color: #0a0c0f; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.25s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,201,167,0.3); }
+.btn-secondary { background: transparent; color: var(--text); padding: 0.85rem 2rem; border-radius: 8px; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.25s; }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.hero-right { animation: fadeUp 0.9s 0.25s ease both; }
+.hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2.2rem; position: relative; overflow: hidden; }
+.hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.hc-label { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.5rem; }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.8rem; }
+.stat-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; }
+.stat-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text); line-height: 1; }
+.stat-num span { color: var(--accent); }
+.stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+.ptag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ptag { background: var(--faint); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 0.3rem 0.75rem; border-radius: 100px; }
+
+/* TRUST STRIP */
+.trust { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.6rem 5rem; display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+.trust-label { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); white-space: nowrap; }
+.trust-items { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.trust-item { font-size: 0.88rem; color: var(--muted); display: flex; align-items: center; gap: 0.45rem; }
+
+/* SECTIONS */
+section { padding: 6rem 5rem; }
+.sec-label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-weight: 600; margin-bottom: 0.7rem; }
+h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.9rem; }
+.sec-sub { color: var(--muted); font-size: 1rem; max-width: 560px; line-height: 1.75; margin-bottom: 3.5rem; }
+
+/* SERVICES */
+#services { background: var(--bg); }
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; }
+.svc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+.svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.svc-card:hover { transform: translateY(-5px); border-color: rgba(0,201,167,0.2); background: var(--surface2); }
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.svc-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+.svc-tagline { color: var(--accent); font-size: 0.8rem; font-style: italic; margin-bottom: 1.1rem; }
+.svc-desc { color: var(--muted); font-size: 0.87rem; line-height: 1.7; margin-bottom: 1.2rem; }
+.svc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.svc-tag { background: var(--faint); border: 1px solid var(--border); color: var(--muted); font-size: 0.74rem; padding: 0.22rem 0.62rem; border-radius: 6px; }
+
+/* EXPERTISE */
+#expertise { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.exp-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; max-width: 1200px; }
+.test-group { margin-bottom: 2rem; }
+.tg-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.tg-dot { width: 10px; height: 10px; border-radius: 3px; }
+.tg-dot.green { background: var(--accent); }
+.tg-dot.blue { background: var(--accent2); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.48rem 0.9rem; font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s; }
+.chip:hover { border-color: var(--accent); color: var(--text); background: rgba(0,201,167,0.04); }
+.chip-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.cdg { background: var(--accent); }
+.cdb { background: var(--accent2); }
+.exp-right { position: sticky; top: 100px; }
+.exp-card { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 1.8rem; margin-bottom: 1.2rem; }
+.exp-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+.cov-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.cov-label { font-size: 0.84rem; color: var(--muted); }
+.cov-bar { width: 130px; height: 5px; background: var(--border); border-radius: 100px; overflow: hidden; }
+.cov-fill { height: 100%; border-radius: 100px; background: var(--accent); }
+.cov-fill.b { background: var(--accent2); }
+.cov-fill.g { background: var(--gold); }
+
+
+
+/* WHY */
+#why { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; }
+.why-card { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s; }
+.why-card:hover { border-color: rgba(0,201,167,0.25); transform: translateY(-3px); }
+.why-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+.why-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+.why-desc { color: var(--muted); font-size: 0.87rem; line-height: 1.7; }
+
+/* FAQ */
+#faq { background: var(--bg); }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1100px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.faq-q { width: 100%; background: none; border: none; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 500; padding: 1.3rem 1.5rem; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: color 0.2s; }
+.faq-q:hover { color: var(--accent); }
+.faq-arrow { color: var(--muted); font-size: 0.9rem; transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--accent); }
+.faq-a { color: var(--muted); font-size: 0.87rem; line-height: 1.7; padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.3rem; }
+
+/* CONTACT */
+#contact { background: var(--surface); border-top: 1px solid var(--border); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; max-width: 1100px; align-items: start; }
+.c-detail { display: flex; align-items: flex-start; gap: 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.3rem; margin-bottom: 0.9rem; transition: border-color 0.2s; }
+.c-detail:hover { border-color: rgba(0,201,167,0.3); }
+.c-icon { width: 38px; height: 38px; background: rgba(0,201,167,0.1); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.c-lbl { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.15rem; }
+.c-val { font-size: 0.9rem; color: var(--text); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.c-val:hover { color: var(--accent); }
+.contact-form { background: var(--bg); border: 1px solid var(--border); border-radius: 18px; padding: 2.5rem; position: relative; overflow: hidden; }
+.contact-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.form-head { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.3rem; }
+.form-note { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.8rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fg { margin-bottom: 1.1rem; }
+.fg label { display: block; font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; }
+.fg input, .fg select, .fg textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; resize: none; }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent); }
+.fg input::placeholder, .fg textarea::placeholder { color: var(--muted); opacity: 0.5; }
+.fg select option { background: var(--surface); }
+.fg textarea { height: 100px; }
+.sub-btn { width: 100%; background: var(--accent); color: #0a0c0f; border: none; padding: 0.95rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.25s; margin-top: 0.3rem; }
+.err { color: #ff6b6b; font-size: 0.78rem; margin-top: 0.3rem; min-height: 1rem; }
+.sub-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,201,167,0.25); }
+
+/* FOOTER */
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 4rem 5rem 2rem; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.7; max-width: 260px; margin: 0.8rem 0 1.2rem; }
+.footer-email { color: var(--accent); font-size: 0.85rem; text-decoration: none; font-weight: 500; }
+.footer-email:hover { opacity: 0.75; }
+.ft-col-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; }
+.ft-col ul { list-style: none; }
+.ft-col li { margin-bottom: 0.65rem; }
+.ft-col a { color: var(--muted); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+.ft-col a:hover { color: var(--accent); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { color: var(--muted); font-size: 0.82rem; }
+.footer-blinks { display: flex; gap: 2rem; list-style: none; }
+.footer-blinks a { color: var(--muted); font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
+.footer-blinks a:hover { color: var(--accent); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  nav { padding: 1.1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  section { padding: 4rem 1.5rem; }
+  .trust { padding: 1.5rem; gap: 1rem; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .exp-layout { grid-template-columns: 1fr; }
+  .exp-right { position: static; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .steps::before { display: none; }
+  .why-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  footer { padding: 3rem 1.5rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .steps { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo"><div class="nav-dot"></div>Test Master</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+
+    <li><a href="#why">Why Me</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="badge-dot"></span> Available for Projects Worldwide</div>
+      <h1>Quality You Can <span class="accent-word">Trust.</span><br>Testing Done <span class="accent-word">Right.</span></h1>
+      <p class="hero-sub"><strong>15+ years</strong> of expert Manual Testing & QA Consulting across Desktop, Web, Mobile and Cloud — delivering end-to-end quality for clients globally on <strong>Windows & macOS</strong>.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Services →</a>
+        <a href="#contact" class="btn-secondary">Free Consultation</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hc-label">At a Glance</div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="stat-num">15<span>+</span></div><div class="stat-label">Years in QA</div></div>
+          <div class="stat-box"><div class="stat-num">20<span>+</span></div><div class="stat-label">Testing Types</div></div>
+          <div class="stat-box"><div class="stat-num">4<span>+</span></div><div class="stat-label">Platforms</div></div>
+          <div class="stat-box"><div class="stat-num">100<span>%</span></div><div class="stat-label">Client Focus</div></div>
+        </div>
+        <div class="ptag-row">
+          <span class="ptag">🌐 Web</span><span class="ptag">📱 Mobile</span><span class="ptag">🖥️ Desktop</span><span class="ptag">☁️ Cloud</span><span class="ptag">🪟 Windows</span><span class="ptag">🍎 macOS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <span class="trust-label">Trusted Across</span>
+  <div class="trust-items">
+    <span class="trust-item">🌍 Global Clients</span>
+    <span class="trust-item">🧪 Functional Testing</span>
+    <span class="trust-item">📊 Non-Functional Testing</span>
+    <span class="trust-item">🔐 API & DB Testing</span>
+    <span class="trust-item">📱 Web & Mobile Apps</span>
+    <span class="trust-item">☁️ Cloud Environments</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-label reveal">What I Offer</div>
+  <h2 class="reveal">End-to-End Testing Services</h2>
+  <p class="sec-sub reveal">From functional coverage to launch-day stability — comprehensive QA solutions tailored to your product and timeline.</p>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <span class="svc-icon">🧪</span>
+      <div class="svc-name">Functional Testing</div>
+      <div class="svc-tagline">→ Ship features that work, first time</div>
+      <p class="svc-desc">Thorough manual testing of all features, user flows, and business processes across Web and Mobile platforms — ensuring your software behaves exactly as expected.</p>
+      <div class="svc-tags"><span class="svc-tag">End-to-End</span><span class="svc-tag">UI Testing</span><span class="svc-tag">UAT</span><span class="svc-tag">Black Box</span><span class="svc-tag">Regression</span><span class="svc-tag">Smoke</span><span class="svc-tag">Exploratory</span></div>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">📊</span>
+      <div class="svc-name">Non-Functional Testing</div>
+      <div class="svc-tagline">→ Know your app won't fail on launch day</div>
+      <p class="svc-desc">Validate your application's stability, installation, and deployment readiness. Ensure your product holds up beyond just feature correctness.</p>
+      <div class="svc-tags"><span class="svc-tag">Static Testing</span><span class="svc-tag">A/B Testing</span><span class="svc-tag">Deployment</span><span class="svc-tag">Installation</span></div>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">🔌</span>
+      <div class="svc-name">API & Backend Testing</div>
+      <div class="svc-tagline">→ Validate every layer of your stack</div>
+      <p class="svc-desc">In-depth testing of REST APIs, Web Services, Databases, and Server-side logic to ensure your backend is as solid as your frontend.</p>
+      <div class="svc-tags"><span class="svc-tag">API Testing</span><span class="svc-tag">Web Services</span><span class="svc-tag">Database</span><span class="svc-tag">Server Side</span></div>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">📱</span>
+      <div class="svc-name">Mobile App Testing</div>
+      <div class="svc-tagline">→ Perfect UX on every device</div>
+      <p class="svc-desc">Comprehensive testing of iOS and Android apps — covering UI, functional flows, device compatibility, and platform-specific behaviour.</p>
+      <div class="svc-tags"><span class="svc-tag">iOS</span><span class="svc-tag">Android</span><span class="svc-tag">UI/UX</span><span class="svc-tag">Compatibility</span></div>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">☁️</span>
+      <div class="svc-name">Cloud & Desktop Testing</div>
+      <div class="svc-tagline">→ Quality across every environment</div>
+      <p class="svc-desc">Testing of Cloud-hosted applications and Desktop software on both Windows and macOS, ensuring consistent performance across all platforms.</p>
+      <div class="svc-tags"><span class="svc-tag">Cloud Apps</span><span class="svc-tag">Windows</span><span class="svc-tag">macOS</span><span class="svc-tag">Desktop</span></div>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">🤝</span>
+      <div class="svc-name">QA Consulting</div>
+      <div class="svc-tagline">→ Strategic quality for your team</div>
+      <p class="svc-desc">Advisory services to improve your team's QA processes — from test strategy and planning to bug triage, reporting, and process improvement.</p>
+      <div class="svc-tags"><span class="svc-tag">Strategy</span><span class="svc-tag">Test Planning</span><span class="svc-tag">Bug Triage</span><span class="svc-tag">Process</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="sec-label reveal">Testing Arsenal</div>
+  <h2 class="reveal">Full Spectrum Coverage</h2>
+  <p class="sec-sub reveal">Every testing methodology in my toolkit — covering your product from every angle.</p>
+  <div class="exp-layout">
+    <div>
+      <div class="test-group reveal">
+        <div class="tg-title"><span class="tg-dot green"></span>Functional Testing Types</div>
+        <div class="chip-row">
+          <span class="chip"><span class="chip-dot cdg"></span>End-to-End Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>UI Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>API / Web Services</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Database Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Server Side Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Alpha Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Beta Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>User Acceptance Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Business Process Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Black Box Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Sanity Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Smoke Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>System Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Exploratory Testing</span>
+          <span class="chip"><span class="chip-dot cdg"></span>Regression Testing</span>
+        </div>
+      </div>
+      <div class="test-group reveal">
+        <div class="tg-title"><span class="tg-dot blue"></span>Non-Functional Testing Types</div>
+        <div class="chip-row">
+          <span class="chip"><span class="chip-dot cdb"></span>Static Testing</span>
+          <span class="chip"><span class="chip-dot cdb"></span>A/B Testing</span>
+          <span class="chip"><span class="chip-dot cdb"></span>Deployment Testing</span>
+          <span class="chip"><span class="chip-dot cdb"></span>Installation Testing</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-right reveal">
+      <div class="exp-card">
+        <div class="exp-card-title">Platform Coverage</div>
+        <div class="cov-item"><span class="cov-label">Web Applications</span><div class="cov-bar"><div class="cov-fill" style="width:98%"></div></div></div>
+        <div class="cov-item"><span class="cov-label">Mobile Apps</span><div class="cov-bar"><div class="cov-fill" style="width:92%"></div></div></div>
+        <div class="cov-item"><span class="cov-label">Desktop Software</span><div class="cov-bar"><div class="cov-fill b" style="width:90%"></div></div></div>
+        <div class="cov-item"><span class="cov-label">Cloud Applications</span><div class="cov-bar"><div class="cov-fill b" style="width:88%"></div></div></div>
+        <div class="cov-item"><span class="cov-label">API & Backend</span><div class="cov-bar"><div class="cov-fill g" style="width:95%"></div></div></div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-title">OS Environments</div>
+        <div class="cov-item"><span class="cov-label">Windows</span><div class="cov-bar"><div class="cov-fill" style="width:100%"></div></div></div>
+        <div class="cov-item"><span class="cov-label">macOS</span><div class="cov-bar"><div class="cov-fill" style="width:100%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- WHY ME -->
+<section id="why">
+  <div class="sec-label reveal">Why Choose Me</div>
+  <h2 class="reveal">The Test Master Advantage</h2>
+  <p class="sec-sub reveal">What sets my QA consulting apart from the rest.</p>
+  <div class="why-grid">
+    <div class="why-card reveal"><span class="why-icon">🏅</span><div class="why-title">15+ Years of Real Experience</div><p class="why-desc">Over a decade and a half of hands-on testing across products, apps, and consulting projects — I've seen every kind of bug and know how to find them before your users do.</p></div>
+    <div class="why-card reveal"><span class="why-icon">🌍</span><div class="why-title">Global Clientele</div><p class="why-desc">I work with clients across the world — from startups to enterprises — adapting to different time zones, workflows, and communication styles seamlessly.</p></div>
+    <div class="why-card reveal"><span class="why-icon">🔍</span><div class="why-title">Deep Manual Testing Expertise</div><p class="why-desc">Specialising in manual testing means every test case is thought through by a human expert — catching edge cases and UX issues that automated tools often miss.</p></div>
+    <div class="why-card reveal"><span class="why-icon">⚡</span><div class="why-title">Fast Turnaround</div><p class="why-desc">I understand release pressure. I work efficiently to deliver actionable bug reports and test summaries quickly — so you can ship on time, every time.</p></div>
+    <div class="why-card reveal"><span class="why-icon">📋</span><div class="why-title">Detailed, Actionable Reports</div><p class="why-desc">Every bug reported comes with clear steps to reproduce, severity ratings, and recommendations — making it easy for your dev team to act fast.</p></div>
+    <div class="why-card reveal"><span class="why-icon">🤝</span><div class="why-title">Flexible Engagement</div><p class="why-desc">One-time project, ongoing QA support, or a consulting retainer — I offer flexible arrangements to fit your needs and budget without lock-in.</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="sec-label reveal">FAQ</div>
+  <h2 class="reveal">Frequently Asked Questions</h2>
+  <p class="sec-sub reveal">Answers to the most common questions about my testing services.</p>
+  <div class="faq-grid">
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">What types of applications do you test? <span class="faq-arrow">▾</span></button><div class="faq-a">I test Web Applications, Mobile Apps (iOS & Android), Desktop Software, and Cloud-based applications — across both Windows and macOS. If your software runs on it, I can test it.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Do you work with international clients? <span class="faq-arrow">▾</span></button><div class="faq-a">Absolutely. I work with clients globally across different time zones. Remote collaboration is fully supported via email, video calls, and popular project management tools.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">How quickly can you start testing? <span class="faq-arrow">▾</span></button><div class="faq-a">In most cases, I can begin within 2–3 business days of project kick-off, once access to the application and the agreed test scope are in place.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">What does a typical engagement look like? <span class="faq-arrow">▾</span></button><div class="faq-a">It starts with an initial consultation to understand your product. I then define a test plan, execute testing, and deliver detailed reports. Engagements can be project-based, milestone-based, or ongoing retainers.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Do you do automated testing? <span class="faq-arrow">▾</span></button><div class="faq-a">My specialty is Manual Testing — which provides deep exploratory coverage and human judgment that automation alone cannot offer. I can also advise on automation strategy as part of consulting.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">What do I receive at the end of testing? <span class="faq-arrow">▾</span></button><div class="faq-a">You'll receive a comprehensive test summary report, detailed bug reports (with severity, steps to reproduce, screenshots), and a quality sign-off — giving full confidence before release.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Can you help determine what testing I need? <span class="faq-arrow">▾</span></button><div class="faq-a">Yes! If you're unsure what type of testing is right for your product, I'll assess your situation and recommend the most effective approach based on your stage, budget, and risk areas.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Do you require long-term contracts? <span class="faq-arrow">▾</span></button><div class="faq-a">No long-term contracts required. I'm flexible — engage me for a single project, a specific milestone, or on an ongoing basis. Quality should be accessible without lock-in.</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="reveal">
+      <div class="sec-label">Get In Touch</div>
+      <h2>Let's Work Together</h2>
+      <p class="sec-sub">Have a product that needs rigorous testing? Tell me about your project and I'll respond within 24 hours.</p>
+      <div class="c-detail"><div class="c-icon">📧</div><div><div class="c-lbl">Email</div><a href="/cdn-cgi/l/email-protection#3e4d4b5a56574c104c5b485f50555f4c7e44515651535f5752105750" class="c-val"><span class="__cf_email__" data-cfemail="ed9e988985849fc39f889b8c83868c9fad97828582808c8481c38483">[email&#160;protected]</span></a></div></div>
+      <div class="c-detail"><div class="c-icon">🌍</div><div><div class="c-lbl">Availability</div><span class="c-val">Worldwide — Remote & On-site</span></div></div>
+      <div class="c-detail"><div class="c-icon">💼</div><div><div class="c-lbl">Engagement Types</div><span class="c-val">Project-based · Consulting · Retainer</span></div></div>
+      <div class="c-detail"><div class="c-icon">⏱️</div><div><div class="c-lbl">Response Time</div><span class="c-val">Within 24 hours</span></div></div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-head">Send a Message</div>
+      <div class="form-note">Fill in your details and I'll be in touch shortly.</div>
+      <div id="form-success" style="display:none; background:rgba(0,201,167,0.1); border:1px solid var(--accent); border-radius:10px; padding:1.2rem 1.5rem; margin-bottom:1.2rem; color:var(--accent); font-weight:500; font-size:0.95rem; text-align:center;">
+        ✅ Message submitted successfully! I'll be in touch within 24 hours.
+      </div>
+      <form id="contact-fields" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNetlifySubmit(event)">
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="bot-field" style="display:none">
+        <div class="form-row">
+          <div class="fg"><label>First Name *</label><input type="text" id="fname" name="first-name" placeholder="John"><div class="err" id="err-fname"></div></div>
+          <div class="fg"><label>Last Name *</label><input type="text" id="lname" name="last-name" placeholder="Smith"><div class="err" id="err-lname"></div></div>
+        </div>
+        <div class="fg"><label>Contact Email *</label><input type="email" id="cemail" name="email" placeholder="you@company.com"><div class="err" id="err-email"></div></div>
+        <div class="fg"><label>Contact Number *</label><input type="tel" id="cphone" name="phone" placeholder="+91 98765 43210"><div class="err" id="err-phone"></div></div>
+        <div class="fg"><label>Message / Enquiry *</label><textarea id="cmsg" name="message" placeholder="Describe your project, testing needs, timeline..." style="height:110px;"></textarea><div class="err" id="err-msg"></div></div>
+        <button type="submit" class="sub-btn">Submit Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="#" class="nav-logo"><div class="nav-dot"></div>Test Master</a>
+      <p class="footer-brand-desc">15+ years of expert QA & Manual Testing Consulting for Web, Mobile, Desktop and Cloud applications — worldwide.</p>
+      <a href="/cdn-cgi/l/email-protection#5f2c2a3b37362d712d3a293e31343e2d1f25303730323e3633713631" class="footer-email"><span class="__cf_email__" data-cfemail="1e6d6b7a76776c306c7b687f70757f6c5e64717671737f7772307770">[email&#160;protected]</span></a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Services</div>
+      <ul>
+        <li><a href="#services">Functional Testing</a></li>
+        <li><a href="#services">Non-Functional Testing</a></li>
+        <li><a href="#services">API & Backend Testing</a></li>
+        <li><a href="#services">Mobile App Testing</a></li>
+        <li><a href="#services">Cloud & Desktop Testing</a></li>
+        <li><a href="#services">QA Consulting</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Testing Types</div>
+      <ul>
+        <li><a href="#expertise">Regression Testing</a></li>
+        <li><a href="#expertise">Exploratory Testing</a></li>
+        <li><a href="#expertise">UAT</a></li>
+        <li><a href="#expertise">Smoke & Sanity</a></li>
+        <li><a href="#expertise">Black Box Testing</a></li>
+        <li><a href="#expertise">A/B Testing</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Quick Links</div>
+      <ul>
+
+        <li><a href="#why">Why Test Master</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Test Master — QA & Software Testing Consultant. All rights reserved.</div>
+    <ul class="footer-blinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Netlify Form submit with validation
+  function handleNetlifySubmit(e) {
+    e.preventDefault();
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const email = document.getElementById('cemail').value.trim();
+    const phone = document.getElementById('cphone').value.trim();
+    const msg = document.getElementById('cmsg').value.trim();
+    let valid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\+]?[\d\s\-\(\)]{7,15}$/;
+    document.getElementById('err-fname').textContent = fname ? '' : 'First name is required.'; if (!fname) valid = false;
+    document.getElementById('err-lname').textContent = lname ? '' : 'Last name is required.'; if (!lname) valid = false;
+    document.getElementById('err-email').textContent = emailRegex.test(email) ? '' : 'Please enter a valid email.'; if (!emailRegex.test(email)) valid = false;
+    document.getElementById('err-phone').textContent = phoneRegex.test(phone) ? '' : 'Please enter a valid phone number.'; if (!phoneRegex.test(phone)) valid = false;
+    document.getElementById('err-msg').textContent = msg.length >= 10 ? '' : 'Please enter at least 10 characters.'; if (msg.length < 10) valid = false;
+    if (!valid) return;
+    // Submit to Netlify
+    const form = document.getElementById('contact-fields');
+    const formData = new FormData(form);
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(formData).toString() })
+      .then(() => {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      })
+      .catch(() => alert('Something went wrong. Please email directly at sudhir.revankar@zohomail.in'));
+  }
+
+  function validateAndSubmit() {
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const email = document.getElementById('cemail').value.trim();
+    const phone = document.getElementById('cphone').value.trim();
+    const msg = document.getElementById('cmsg').value.trim();
+    let valid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\+]?[\d\s\-\(\)]{7,15}$/;
+    document.getElementById('err-fname').textContent = fname ? '' : 'First name is required.'; if (!fname) valid = false;
+    document.getElementById('err-lname').textContent = lname ? '' : 'Last name is required.'; if (!lname) valid = false;
+    document.getElementById('err-email').textContent = emailRegex.test(email) ? '' : 'Please enter a valid email address.'; if (!emailRegex.test(email)) valid = false;
+    document.getElementById('err-phone').textContent = phoneRegex.test(phone) ? '' : 'Please enter a valid contact number.'; if (!phoneRegex.test(phone)) valid = false;
+    document.getElementById('err-msg').textContent = msg.length >= 10 ? '' : 'Please enter at least 10 characters.'; if (msg.length < 10) valid = false;
+    if (valid) {
+      document.getElementById('contact-fields').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  }
+
+  // Nav shrink on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.padding = window.scrollY > 60 ? '0.75rem 5rem' : '1.1rem 5rem';
+  });
+</script>
+</body>
+</html>
