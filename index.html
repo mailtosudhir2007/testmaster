@@ -217,6 +217,15 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 4r
 </head>
 <body>
 
+<!-- HIDDEN NETLIFY FORM FOR DETECTION -->
+<form name="contact" netlify data-netlify="true" hidden>
+  <input type="text" name="first-name">
+  <input type="text" name="last-name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <textarea name="message"></textarea>
+</form>
+
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo"><div class="nav-dot"></div>Test Master</a>
@@ -434,7 +443,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 4r
       <div id="form-success" style="display:none; background:rgba(0,201,167,0.1); border:1px solid var(--accent); border-radius:10px; padding:1.2rem 1.5rem; margin-bottom:1.2rem; color:var(--accent); font-weight:500; font-size:0.95rem; text-align:center;">
         ✅ Message submitted successfully! I'll be in touch within 24 hours.
       </div>
-      <form id="contact-fields" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNetlifySubmit(event)">
+      <form id="contact-fields" name="contact" method="POST" action="https://formspree.io/f/mvzvnwkg" onsubmit="handleNetlifySubmit(event)">
         <input type="hidden" name="form-name" value="contact">
         <input type="hidden" name="bot-field" style="display:none">
         <div class="form-row">
@@ -537,13 +546,17 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 4r
     document.getElementById('err-phone').textContent = phoneRegex.test(phone) ? '' : 'Please enter a valid phone number.'; if (!phoneRegex.test(phone)) valid = false;
     document.getElementById('err-msg').textContent = msg.length >= 10 ? '' : 'Please enter at least 10 characters.'; if (msg.length < 10) valid = false;
     if (!valid) return;
-    // Submit to Netlify
+    // Submit to Formspree
     const form = document.getElementById('contact-fields');
     const formData = new FormData(form);
-    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(formData).toString() })
-      .then(() => {
-        form.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
+    fetch('https://formspree.io/f/mvzvnwkg', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
+      .then(res => {
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          alert('Something went wrong. Please email directly at sudhir.revankar@zohomail.in');
+        }
       })
       .catch(() => alert('Something went wrong. Please email directly at sudhir.revankar@zohomail.in'));
   }
